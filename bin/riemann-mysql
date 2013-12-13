@@ -17,7 +17,8 @@ class Riemann::Tools::Mysql
     options = { :host => opts[:mysql_host],
                 :port => opts[:mysql_port],
                 :username => opts[:mysql_username],
-                :password => opts[:mysql_password] }
+                :password => opts[:mysql_password],
+                :reconnect => true }
     @mysql = ::Mysql2::Client.new(options)
   end
 
