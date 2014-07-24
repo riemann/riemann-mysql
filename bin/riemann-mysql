@@ -12,6 +12,7 @@ class Riemann::Tools::Mysql
   opt :mysql_port, "MySQL port", :default => 3306
   opt :mysql_username, "MySQL username", :default => ''
   opt :mysql_password, "MySQL password", :default => ''
+  opt :global_status, "Queries the status values for all connections to MySQL", :default => false
 
   def initialize
     options = { :host => opts[:mysql_host],
@@ -23,8 +24,13 @@ class Riemann::Tools::Mysql
   end
 
   def tick
+    if opts[:global_status] == true
+        query = "SHOW GLOBAL STATUS;"
+    else
+        query = "SHOW STATUS;"
+    end
     begin
-      @mysql.query("SHOW STATUS;").each do |var|
+      @mysql.query(query).each do |var|
         data = {
           :host => opts[:mysql_host],
           :service => "mysql #{var["Variable_name"]}",
@@ -39,3 +45,4 @@ class Riemann::Tools::Mysql
 end
 
 Riemann::Tools::Mysql.run
+
