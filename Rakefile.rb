@@ -15,19 +15,20 @@ gemspec = Gem::Specification.new do |s|
   s.version = '0.2.1'
   s.author = 'Fede Borgnia'
   s.email = 'fborgnia@gmail.com'
+  s.license = 'MIT'
   s.homepage = 'https://github.com/riemann/riemann-mysql'
   s.platform = Gem::Platform::RUBY
   s.summary = 'MySQL client that submit events to Riemann.'
 
-  s.add_dependency 'riemann-tools', '>= 0.2.18'
-  s.add_dependency 'mysql2', '>= 0.3.13'
+  s.add_dependency 'riemann-tools', '~> 0.2.18'
+  s.add_dependency 'mysql2', '~> 0.4.0'
 
   s.files = FileList['lib/**/*', 'bin/*', 'LICENSE', 'README.md'].to_a
   s.executables |= Dir.entries('bin/')
   s.require_path = 'lib'
   s.has_rdoc = false
 
-  s.required_ruby_version = '>= 1.8.7'
+  s.required_ruby_version = '>= 2.0.0'
 end
 
 Gem::PackageTask.new gemspec do |p|
