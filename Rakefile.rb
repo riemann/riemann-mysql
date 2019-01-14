@@ -12,14 +12,14 @@ gemspec = Gem::Specification.new do |s|
   s.rubyforge_project = 'riemann-mysql'
 
   s.name = 'riemann-mysql'
-  s.version = '0.2.0'
+  s.version = '0.2.1'
   s.author = 'Fede Borgnia'
   s.email = 'fborgnia@gmail.com'
   s.homepage = 'https://github.com/riemann/riemann-mysql'
   s.platform = Gem::Platform::RUBY
   s.summary = 'MySQL client that submit events to Riemann.'
 
-  s.add_dependency 'riemann-tools', '>= 0.2.2'
+  s.add_dependency 'riemann-tools', '>= 0.2.18'
   s.add_dependency 'mysql2', '>= 0.3.13'
 
   s.files = FileList['lib/**/*', 'bin/*', 'LICENSE', 'README.md'].to_a
